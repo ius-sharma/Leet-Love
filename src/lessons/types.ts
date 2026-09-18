@@ -5,6 +5,8 @@ export type Snapshot = {
   id: string; op: string; title: string; explanation: string; equation: string;
   selected: number[]; best: number[]; pointers: { index: number; label: string }[];
   range: boolean; metrics: { label: string; value: string }[];
+  conflicts?: number[]; status?: { label: string; invalid: boolean };
+  motion?: { label: string; from: number; to: number };
   memory?: { label: string; value: number; invalid?: boolean }[];
   tone: 'neutral' | 'add' | 'remove' | 'save' | 'done'; focus?: number;
   challenge?: Challenge; checkpoint?: { label: string; value: string };

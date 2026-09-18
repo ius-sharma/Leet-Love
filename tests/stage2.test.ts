@@ -47,6 +47,11 @@ test('generated sorted pairs select only endpoints and return matching 1-based p
       const frames=buildTrace(lessons[4],{raw:nums.join(','),parameter:String(target)});
       assert.deepEqual(frames.at(-1)!.result,[l+1,r+1]);
       for(const f of frames){assert.equal(f.range,false);assert.equal(f.selected.length,2);assert.notEqual(f.selected[0],f.selected[1]);assert.equal(Number(f.metrics[0].value),f.selected.reduce((a,i)=>a+nums[i],0));}
+      for(const f of frames.filter(frame=>frame.motion)) {
+        assert.ok(!f.selected.includes(f.motion!.from), 'the discarded endpoint is outside the new pair');
+        assert.ok(f.selected.includes(f.motion!.to), 'the arriving endpoint belongs to the new pair');
+        assert.equal(Math.abs(f.motion!.from-f.motion!.to),1);
+      }
     }
   }
 });
@@ -60,6 +65,9 @@ test('intermediate sums, frequencies, saved ranges, and empty cases remain accur
       if(lesson.id==='unique-substring'){
         const counts:Record<string,number>={};f.selected.forEach(i=>{const label=values[i]===' '?'space':String(values[i]);counts[label]=(counts[label]??0)+1;});
         assert.deepEqual(Object.fromEntries((f.memory??[]).map(m=>[m.label,m.value])),counts);
+        const duplicates=f.selected.filter(i=>f.selected.some(j=>i!==j&&values[i]===values[j]));
+        assert.deepEqual(f.conflicts,duplicates, 'all copies of duplicate characters must be marked');
+        assert.equal(f.status?.invalid,duplicates.length>0);
         if(f.tone==='save'||f.tone==='done')assert.equal(new Set(f.selected.map(i=>values[i])).size,f.selected.length);
       }
     }
@@ -67,6 +75,11 @@ test('intermediate sums, frequencies, saved ranges, and empty cases remain accur
   assert.equal(buildTrace(lessons[3],{raw:'',parameter:''}).at(-1)!.result,0);
   assert.equal(buildTrace(lessons[3],{raw:'a a!',parameter:''}).at(-1)!.result,3);
   assert.deepEqual(buildTrace(lessons[2],{raw:'1,1',parameter:'9'}).at(-1)!.selected,[]);
+  for(const lesson of [lessons[2],lessons[3]]) {
+    const shrinkingCode=lesson.code.filter(line=>line.id==='remove').map(line=>line.text.trim());
+    assert.equal(shrinkingCode.length,2);
+    assert.equal(shrinkingCode[1],'left += 1', 'a shrink operation also highlights its pointer movement');
+  }
 });
 test('invalid inputs preserve domain prerequisites',()=>{
   for(const [index,raw,parameter] of [[0,'1,,2','1'],[0,'1,2','3'],[1,'Abc','1'],[1,'abc','0'],[2,'1,-2','4'],[2,'1,2','0'],[3,'😀',''],[4,'3,1,2','3'],[4,'1,2,3','9'],[4,'1,1,2,2','3']] as const)assert.throws(()=>parseLessonInput(lessons[index],{raw,parameter}));

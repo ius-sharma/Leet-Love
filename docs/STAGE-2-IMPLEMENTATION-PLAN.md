@@ -1,6 +1,6 @@
 # Stage 2 implementation plan — a reusable learning library
 
-Status: proposed implementation plan, grounded in the current repository.
+Status: approved implementation plan. Review policy updated to the user's implementation request: at least 8.5/10, up to five rounds.
 Prepared: 2026-09-18.
 
 ## 1. Outcome and scope
@@ -148,7 +148,7 @@ Handle unavailable storage, corrupt data, and old versions without breaking the 
 - Introduce the reducer and stable semantic code mapping.
 - Consolidate styles while preserving the reviewed layout and mobile operation context.
 
-Exit gate: existing example, negative values, rewind/history, wrong/correct choices, reset, final winner, and keyboard operation still pass. Independent critic scores the migrated experience at least 8 before it becomes the new baseline.
+Exit gate: existing example, negative values, rewind/history, wrong/correct choices, reset, final winner, and keyboard operation still pass. Independent critic scores the migrated experience at least 8.5 before it becomes the new baseline.
 
 ### Milestone B — Prove reuse with the vowel lesson
 
@@ -172,7 +172,7 @@ Exit gate: a learner can start either lesson, return after refresh, and continue
 - Implement Longest Substring Without Repeating Characters next: character counts, duplicate detection, and repeated shrink decisions.
 - Reuse existing range/pointer primitives and add only the auxiliary state panel required by the lessons.
 
-Exit gate: both lessons correctly distinguish valid/invalid and partial states, handle boundary cases, and teach why shrinking is allowed. Each has a critic score of at least 8.
+Exit gate: both lessons correctly distinguish valid/invalid and partial states, handle boundary cases, and teach why shrinking is allowed. Each has a critic score of at least 8.5.
 
 ### Milestone E — Add two pointers and stabilize the library
 
@@ -211,8 +211,8 @@ Preserve the user's critic process for every material visual iteration:
 1. Builder delivers a runnable candidate with a clear scope.
 2. A separate critic takes screenshots at initial/focused entry, wrong action, correct action, a key transition, comparison, completion, and mobile equivalents.
 3. Critic evaluates algorithmic visual accuracy, direct interaction, animation clarity, code alignment, and viewport usability. It supplies a 0–10 score and ranked issues, with screenshot evidence and observation limits.
-4. A score of 4–7 is usable but not ready. Below 8, builder addresses the ranked issues and returns a new candidate.
-5. Stop at 8 or above, or after three builder/review rounds for that candidate. If still below 8 after round three, report the unresolved issues and keep it out of the finished library; do not quietly lower the threshold.
+4. A score of 4–7 is usable but not ready. Below 8, builder addresses the ranked issues and returns a new candidate. Scores from 8 to below 8.5 also require improvements to meet the acceptance threshold.
+5. Stop at 8.5 or above, or after five builder/review rounds for that candidate. If still below 8.5 after round five, report the unresolved issues and keep it out of the finished library; do not quietly lower the threshold.
 
 Visual correctness defects block acceptance even if an overall score is high. A screenshot score is not a substitute for algorithm tests or learner evidence. If the critic cannot access the browser, repair the review environment; do not manufacture a score from source inspection.
 
@@ -257,7 +257,7 @@ Stage 2 implementation is complete when:
 - Each lesson has an original explanation, invariant, examples, two practice variations, and useful corrective feedback.
 - Same-browser resume and practice status work, including storage/version failure cases.
 - Algorithm, player, browser, type, and production-build checks pass.
-- Each new lesson and materially changed shared flow receives an independent critic score of at least 8 within the stated review policy.
+- Each new lesson and materially changed shared flow receives an independent critic score of at least 8.5 within the stated review policy.
 - Review reports and representative screenshots are saved with the candidate they evaluated.
 - The authoring guide demonstrates how to add another supported lesson.
 

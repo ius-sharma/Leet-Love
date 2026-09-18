@@ -1,46 +1,65 @@
 # LeetLove
 
-Learn algorithms through stories, interactive execution, and practice.
+Learn algorithms through stories, direct interaction, and independent practice.
 
-## Stage 1: Maximum Average Subarray I
+## Stage 2 — the learning library
 
-The first lesson teaches fixed-size sliding windows using LeetCode 643. Includes a camera-frame story, editable inputs, synchronized Python code, reversible playback, prediction prompts, and an independent challenge.
+Five lessons share the same deterministic player, visual primitives, navigation, and progress system:
 
-### Interactive modes
+1. Maximum Average Subarray I
+2. Maximum Number of Vowels in a Substring of Given Length
+3. Minimum Size Subarray Sum
+4. Longest Substring Without Repeating Characters
+5. Two Sum II — Input Array Is Sorted
 
-- **Hands-on:** choose the next incoming/outgoing array value, then decide whether to save the candidate window. Incorrect choices explain the rule without advancing execution.
-- **Watch & explore:** play, pause, step, scrub, or inspect individual values.
-- The moving frame, color-matched arithmetic, inline Python operation, and saved-best markers make each change visible.
-- The window notebook remembers explored candidates while rewinding. Reset or applying input clears the notebook.
-- At completion, the gold frame highlights the winning range; the return equation shows its average.
+Open the library at `/`; lessons have stable `/learn/<problem-slug>` URLs.
 
-Use **Start hands-on lesson** to focus the active learning area. Narrow screens keep the current Python operation alongside the array. Reduced-motion preferences disable transitions.
+### Learn by doing
+
+- **Hands-on:** choose a value or a semantic action. Wrong choices explain the rule without advancing.
+- **Watch & explore:** inspect values, play/pause, change speed, step, or scrub the timeline.
+- The current Python operation, arithmetic, selected range/pair, saved answer, and optional character counts stay synchronized.
+- The exploration notebook keeps visited candidates when you rewind.
+- Each lesson has an original story, invariant, edge presets, and two independent practices with reasoning checks.
+
+### Progress
+
+Saved in this browser/device only. Runs resume after refresh. Practice completion is separate from watching the animation. Reset run preserves practice completion; Reset library progress clears all local runs and results. Invalid or incompatible saved data falls back to a fresh run. Storage failure leaves the lesson usable without persistence.
 
 ## Run locally
 
-Requires Node.js 20.9 or newer and npm.
+Requires Node.js 20.9+ and npm.
 
     npm install
     npm run dev
 
-Open http://localhost:3000. No API keys are required. Fonts load from Google Fonts when available, with sans-serif fallbacks.
+Open http://localhost:3000. No API keys or backend service are required. Google Fonts are optional; local font fallbacks work when the network is unavailable.
 
-## Checks
+## Verify
 
     npm test
     npm run typecheck
+    npm run verify:python
     npm run build
+
+The Python parity check requires Python on PATH and executes only the authored lesson solutions. Python is not required to run the website. The test suite includes generated oracle comparisons, intermediate invariants, input validation, guided decisions, stale-action protection, replay/history, and versioned restoration.
+
+Independent visual reviews and screenshots are in `reviews/stage-2/`. Browser checks use actual interactive flows; automated algorithm tests do not substitute for screenshot or learner reviews.
 
 ## Structure
 
-- src/lib/lesson.ts: lesson content, validation, deterministic execution snapshots.
-- src/app/page.tsx: interface and playback controls.
-- src/components/window-lab.tsx: direct interaction, moving frame, arithmetic, and window notebook.
-- src/app/globals.css: responsive styles and reduced-motion support.
-- tests/lesson.test.ts: edge cases, validation, and comparisons with a brute-force oracle.
+- `src/lessons/`: typed content, code mappings, validation, and algorithm adapters.
+- `src/lib/player.ts`: shared pure playback reducer.
+- `src/lib/progress.ts`: storage schema and validated restoration.
+- `src/components/lesson-player.tsx`: lesson shell and practice.
+- `src/components/lesson-canvas.tsx`: shared visual primitives and learner decisions.
+- `src/components/learning-library.tsx`: discovery, resume, and progress.
+- `src/app/academy.css`: responsive styling and reduced-motion support.
+- `tests/`: algorithm, player, and persistence checks.
+- `docs/lesson-authoring.md`: adding a supported lesson without copying the engine.
 
-The canvas accepts up to 16 integers for readable exploration. The tracing function supports the problem's input bounds, but its snapshots use O(n) storage. The displayed Python algorithm uses O(n) time and O(1) auxiliary space.
+## Scope and limits
 
-## Scope
+The teaching canvas accepts up to 16 values/characters and 500 trace steps. Vowels use lowercase English letters; unique-substring uses printable ASCII including spaces and allows empty input. Numeric prerequisites are validated, including positive values for the minimum-length window and sorted input with exactly one matching pair for Two Sum II.
 
-A local, single-lesson prototype. Progress is session-only. Code is displayed, not executed from user input. Accounts, AI generation, sandbox execution, publishing, and payments are future stages. Learner testing is still needed to validate the teaching experience.
+Snapshots add O(number of teaching steps) storage beyond the displayed algorithm's auxiliary-space complexity. Python is displayed, not executed from learner input. Accounts, remote progress, AI generation, sandboxed submissions, payments, and publishing remain later stages. Real learner validation is still pending.
