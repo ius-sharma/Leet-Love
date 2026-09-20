@@ -27,6 +27,8 @@ The adapter validates input and emits immutable snapshots. Each snapshot describ
 
 Required fields include a stable step ID, semantic code operation, selected indices, saved-answer indices, pointers, metrics, equation, explanation, and visual tone. A contiguous window sets `range: true`; a two-pointer pair sets it to false and selects only its two endpoints.
 
+Use `conflicts` to identify every selected index involved in a duplicate, and `status` to explain whether the current window is invalid. For a pointer move, `motion` records its label, previous index, and destination. The renderer marks the previous endpoint OUT and the destination IN; pointer labels move independently of the stationary cells. Keep these fields accurate when rewinding as well as moving forward.
+
 The first snapshot is the initial state and has no incoming challenge. Every later snapshot needs an incoming challenge. The last snapshot has `tone: done` and a numeric or index-pair result. Empty/no-solution outcomes select nothing; never invent a winning range.
 
 A cell challenge accepts one or more index strings. A choice challenge provides labelled options and accepted keys. Hints explain why an action fails without mutating the algorithm. If multiple choices are valid, include all valid keys. Comparison snapshots optionally become notebook checkpoints.
