@@ -1,0 +1,1393 @@
+[
+  {
+    "version": 1,
+    "sourceHash": "e42a0d578da02deed50e6b78dbac43d1ec5895ca3143c6539fb55f7f9347fe66",
+    "input": [
+      [
+        1,
+        12,
+        -5,
+        -6,
+        50,
+        3
+      ],
+      4
+    ],
+    "events": [
+      {
+        "id": 0,
+        "line": 3,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 1,
+        "line": 4,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 2
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 2,
+        "line": 5,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 2,
+          "best": 2
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 3,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 2,
+          "best": 2,
+          "right": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 4,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 1,
+          "best": 2,
+          "right": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 5,
+        "line": 8,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 51,
+          "best": 2,
+          "right": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 6,
+        "line": 5,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 51,
+          "best": 51,
+          "right": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 7,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 51,
+          "best": 51,
+          "right": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 8,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 39,
+          "best": 51,
+          "right": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 9,
+        "line": 8,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 42,
+          "best": 51,
+          "right": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 10,
+        "line": 5,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 42,
+          "best": 51,
+          "right": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 11,
+        "line": 9,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 42,
+          "best": 51,
+          "right": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 12,
+        "line": 9,
+        "kind": "return",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "total": 42,
+          "best": 51,
+          "right": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        },
+        "result": 12.75
+      }
+    ],
+    "result": 12.75,
+    "complete": true,
+    "runtime": "3.14.3"
+  },
+  {
+    "version": 1,
+    "sourceHash": "06f0f55319ec9b840b164ee615f5438a37b8395c6c360d864aebceaa07b9eb56",
+    "input": [
+      [
+        1,
+        12,
+        -5,
+        -6,
+        50,
+        3
+      ],
+      4
+    ],
+    "events": [
+      {
+        "id": 0,
+        "line": 3,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 1,
+        "line": 4,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 2,
+        "line": 5,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 3,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 0
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 4,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 0,
+          "i": 0
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 5,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 1,
+          "i": 0
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 6,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 1,
+          "i": 1
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 7,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 13,
+          "i": 1
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 8,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 13,
+          "i": 2
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 9,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 8,
+          "i": 2
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 10,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 8,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 11,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 2,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 12,
+        "line": 8,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": -10001,
+          "start": 0,
+          "total": 2,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 13,
+        "line": 4,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 0,
+          "total": 2,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 14,
+        "line": 5,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 2,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 15,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 0,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 16,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 0,
+          "i": 1
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 17,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 12,
+          "i": 1
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 18,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 12,
+          "i": 2
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 19,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 7,
+          "i": 2
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 20,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 7,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 21,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 1,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 22,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 1,
+          "i": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 23,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 51,
+          "i": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 24,
+        "line": 8,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 0.5,
+          "start": 1,
+          "total": 51,
+          "i": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 25,
+        "line": 4,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 1,
+          "total": 51,
+          "i": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 26,
+        "line": 5,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 51,
+          "i": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 27,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 0,
+          "i": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 28,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 0,
+          "i": 2
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 29,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": -5,
+          "i": 2
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 30,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": -5,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 31,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": -11,
+          "i": 3
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 32,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": -11,
+          "i": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 33,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 39,
+          "i": 4
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 34,
+        "line": 7,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 39,
+          "i": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 35,
+        "line": 6,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 42,
+          "i": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 36,
+        "line": 8,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 42,
+          "i": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 37,
+        "line": 4,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 42,
+          "i": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 38,
+        "line": 9,
+        "kind": "before",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 42,
+          "i": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        }
+      },
+      {
+        "id": 39,
+        "line": 9,
+        "kind": "return",
+        "locals": {
+          "nums": [
+            1,
+            12,
+            -5,
+            -6,
+            50,
+            3
+          ],
+          "k": 4,
+          "best": 12.75,
+          "start": 2,
+          "total": 42,
+          "i": 5
+        },
+        "collections": {
+          "nums": {
+            "kind": "list",
+            "ref": 0
+          }
+        },
+        "result": 12.75
+      }
+    ],
+    "result": 12.75,
+    "complete": true,
+    "runtime": "3.14.3"
+  }
+]

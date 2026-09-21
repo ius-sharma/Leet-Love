@@ -7,3 +7,5 @@ playwright-report/
 .env*
 reviews/
 docs/
+__pycache__/
+*.pyc
