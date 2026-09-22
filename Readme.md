@@ -2,7 +2,13 @@
 
 Learn algorithms through stories, direct interaction, and independent practice.
 
-## Stage 2 — the learning library
+## Problem explorer
+
+The home page contains a searchable LeetCode metadata catalog, difficulty filters, local bookmarks, pagination, and a visual-solutions filter. Individual `/problems/<slug>` pages link to authored visual lessons when available and clearly disclose unavailable coverage otherwise. Premium problems are labelled. Problem statements and paid content remain on LeetCode.
+
+The checked-in snapshot is in `src/data/problems.json`. Run `npm run catalog:sync` to refresh it from the public LeetCode catalog; this validates the response and replaces the snapshot only after success. The website works without runtime LeetCode access. Sync is manual, not scheduled. This endpoint does not provide topic tags, so topic filtering is not offered.
+
+## Visual learning
 
 Five lessons share the same deterministic player, visual primitives, navigation, and progress system:
 
@@ -12,7 +18,7 @@ Five lessons share the same deterministic player, visual primitives, navigation,
 4. Longest Substring Without Repeating Characters
 5. Two Sum II — Input Array Is Sorted
 
-Open the library at `/`; lessons have stable `/learn/<problem-slug>` URLs.
+Open the problem explorer at `/`; lessons have stable `/learn/<problem-slug>` URLs. The visual execution map allows direct navigation between recorded operations.
 
 ### Learn by doing
 

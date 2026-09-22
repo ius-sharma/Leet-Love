@@ -1,0 +1,14 @@
+import { mkdir, rename, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { z } from 'zod';
+const source='https://leetcode.com/api/problems/all/';
+const schema=z.object({stat_status_pairs:z.array(z.object({stat:z.object({frontend_question_id:z.number().int().positive(),question__title:z.string().min(1),question__title_slug:z.string().regex(/^[a-z0-9-]+$/),question__hide:z.boolean(),total_acs:z.number().nonnegative(),total_submitted:z.number().nonnegative()}),difficulty:z.object({level:z.number().int().min(1).max(3)}),paid_only:z.boolean()})).min(1)});
+const response=await fetch(source,{signal:AbortSignal.timeout(30000)});
+if(!response.ok)throw new Error(`Catalog refresh failed: HTTP ${response.status}. Existing snapshot is unchanged.`);
+const raw=schema.parse(await response.json());
+const problems=raw.stat_status_pairs.filter(p=>!p.stat.question__hide).map(p=>({number:p.stat.frontend_question_id,title:p.stat.question__title,slug:p.stat.question__title_slug,difficulty:['Easy','Medium','Hard'][p.difficulty.level-1],premium:p.paid_only,acceptance:Math.round(1000*p.stat.total_acs/Math.max(1,p.stat.total_submitted))/10})).sort((a,b)=>a.number-b.number);
+if(new Set(problems.map(p=>p.slug)).size!==problems.length)throw new Error('Duplicate problem slugs; existing snapshot is unchanged.');
+const directory=new URL('../src/data/',import.meta.url);await mkdir(directory,{recursive:true});
+const target=fileURLToPath(new URL('problems.json',directory)),temporary=target+'.tmp';
+await writeFile(temporary,JSON.stringify({source,fetchedAt:new Date().toISOString(),problems}));await rename(temporary,target);
+console.log(`Refreshed ${problems.length} problem records. Visual coverage is determined by authored lessons, not by LeetCode solution availability.`);
