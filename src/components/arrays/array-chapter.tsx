@@ -1,0 +1,24 @@
+'use client';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Check, Compass, Layers3, RotateCcw } from 'lucide-react';
+import { missions, roadmap } from '@/arrays/curriculum';
+import { ARRAY_KEY, decodeArrayProgress, type ArrayProgress } from '@/arrays/progress';
+import { AcademyShell } from '../academy-shell';
+import { CargoScene } from './cargo-scene';
+export function ArrayChapter(){
+  const [progress,setProgress]=useState<ArrayProgress>({}),[notice,setNotice]=useState('Progress and drafts stay on this device.'),[reset,setReset]=useState(false),[loaded,setLoaded]=useState(false);
+  useEffect(()=>{try{setProgress(decodeArrayProgress(localStorage.getItem(ARRAY_KEY)));}catch{setNotice('Browser storage is unavailable. Progress lasts for this session.');}setLoaded(true);},[]);
+  const completed=missions.filter(m=>progress[m.id]?.completed).length;
+  const recent=missions.filter(m=>progress[m.id]&&!progress[m.id].completed).sort((a,b)=>progress[b.id].updated-progress[a.id].updated)[0];
+  const next=recent??missions.find(m=>!progress[m.id]?.completed)??missions[0];
+  return <AcademyShell active="arrays"><main className="arrays-main">
+    <div className="arrays-breadcrumb"><Layers3 size={15}/> YOUR LEARNING PATH <span>CHAPTER 01</span></div>
+    <section className="arrays-hero"><div><span className="arrays-kicker">SMALL STEPS. SOLID FOUNDATIONS.</span><h1>Make arrays<br/><em>second nature.</em></h1><p>Move a crate. Discover a pattern. Write the code.<br/>Build understanding, one mission at a time.</p><Link className="array-button primary" href={`/arrays/${next.id}`}>{completed===missions.length?'Revisit the chapter':recent?'Continue learning':'Start your first mission'}<ArrowRight size={17}/></Link><div className="arrays-hero-meta">5 interactive missions <span>•</span> Learn at your own pace</div></div><CargoScene frame={{values:[4,9,2,7,5],active:[1],message:'',variables:{index:1,best:9},choices:[],correct:0}}/></section>
+    <section className="arrays-progress" aria-label="Chapter progress"><div><span>FOUNDATIONS CHAPTER</span><strong>{loaded?completed:0} of 5 missions completed</strong></div><progress value={completed} max={5} aria-label="Completed missions"/><p>Understand → Play → Code → Check</p></section>
+    <div className="arrays-section-heading"><div><span className="arrays-kicker">YOUR NEXT FIVE STEPS</span><h2>Start simple. Build confidence.</h2></div><p>New here? Follow the order.<br/>Already know a concept? Jump in.</p></div>
+    <div className="array-mission-list">{missions.map((m,i)=><Link className={`array-mission-card ${m.id===next.id?'recommended':''}`} key={m.id} href={`/arrays/${m.id}`}><span className="mission-number">{progress[m.id]?.completed?<Check size={22}/>:String(i+1).padStart(2,'0')}</span><div><div className="mission-card-meta"><span>{m.concept}</span><span className={`array-difficulty ${m.difficulty.toLowerCase()}`}>{m.difficulty}</span></div><h3>{m.title}</h3><p>{m.description}</p></div><span className="mission-card-action">{progress[m.id]?.completed?'Revisit':progress[m.id]?'Continue':'Explore'}<ArrowRight size={18}/></span></Link>)}</div>
+    <section className="arrays-roadmap"><div className="arrays-section-heading"><div><span className="arrays-kicker">BEYOND THE FIRST CHAPTER</span><h2>A path toward array fluency.</h2></div><Compass size={28}/></div><p>31 curated practice problems, from easy foundations to selected hard combinations. These open on LeetCode; interactive missions for these blocks are not available yet.</p><div className="roadmap-blocks">{roadmap.map((block,i)=><details key={block.title}><summary><span>{String(i+1).padStart(2,'0')}</span><div><strong>{block.title}</strong><small>{block.idea}</small></div><span>{block.problems.length} problems</span></summary><ul>{block.problems.map(([title,slug,level])=><li key={slug}><a href={`https://leetcode.com/problems/${slug}/`} target="_blank" rel="noreferrer">{title} ↗</a><span className={`array-difficulty ${level.toLowerCase()}`}>{level}</span></li>)}</ul></details>)}</div><div className="arrays-mastery"><strong>Completion is a milestone. Mastery takes transfer.</strong><p>After each block, explain your approach and complexity, solve a fresh problem without hints, and revisit it later. The five mission completions are not a mastery certificate.</p></div></section>
+    <footer className="arrays-footer"><p role="status">{notice}</p>{reset?<div><span>Clear Arrays drafts and progress?</span><button onClick={()=>{try{localStorage.removeItem(ARRAY_KEY);setProgress({});setNotice('Arrays progress cleared.');}catch{setNotice('Could not clear browser storage.');}setReset(false);}}>Clear</button><button onClick={()=>setReset(false)}>Cancel</button></div>:<button onClick={()=>setReset(true)}><RotateCcw size={13}/> Reset Arrays progress</button>}</footer>
+  </main></AcademyShell>;
+}
