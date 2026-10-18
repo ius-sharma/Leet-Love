@@ -90,9 +90,12 @@ def encode(value, depth=0):
         items = [encode(v, depth + 1) for v in value]
         return sorted(items, key=lambda v: json.dumps(v, sort_keys=True)) if type(value) is set else items
     if type(value) is dict:
-        if len(value) > 100 or any(type(k) is not str for k in value):
-            raise Unsupported("Trace dictionaries require string keys and at most 100 entries.")
-        return {k: encode(v, depth + 1) for k, v in value.items()}
+        if len(value) > 100 or any(type(k) not in (str, int) for k in value):
+            raise Unsupported("Trace dictionaries require string or integer keys and at most 100 entries.")
+        # JSON object keys are strings. Never silently merge 2 and "2".
+        if len({str(k) for k in value}) != len(value):
+            raise Unsupported("Mixed dictionary keys collide when recorded as JSON.")
+        return {str(k): encode(v, depth + 1) for k, v in value.items()}
     raise Unsupported("An unsupported runtime value entered the teaching state.")
 
 
