@@ -9,3 +9,5 @@ reviews/
 docs/
 __pycache__/
 *.pyc
+.auth/
+*.auth-state.json
