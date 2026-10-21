@@ -46,4 +46,5 @@
 .ll-bottom-cta{background:#000;border-color:#000;color:#fff}
 .ll-bottom-cta .ll-eyebrow,.ll-bottom-cta>p,.ll-bottom-cta>.ll-no-signup{color:rgb(255 255 255 / .7)}
 .ll-bottom-cta em{color:#ff7900}
+.ll-bottom-cta .ll-button:hover,.ll-bottom-cta .ll-button:focus-visible{background:#fff;border-color:#fff;color:#000}
 .ll-eyebrow,.ll-no-signup,.ll-problem-note{color:rgb(0 0 0 / .65)}
