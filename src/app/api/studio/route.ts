@@ -5,6 +5,7 @@ import { database, identity, ownerJob } from '@/server/studio/database';
 import { submissionSchema } from '@/submissions/contracts';
 import { validateInput } from '@/submissions/problems';
 import { readBody } from '@/server/studio/request';
+import { sameOrigin } from '@/auth/config';
 export const runtime='nodejs';
 export const dynamic='force-dynamic';
 const reply=(body:unknown,status=200)=>Response.json(body,{status,headers:{'Cache-Control':'no-store'}});
@@ -12,14 +13,14 @@ function failure(error:unknown){return reply({error:error instanceof StudioError
 export async function GET(request:Request){try{
   const url=new URL(request.url);
   if(url.searchParams.get('config')==='1'){const c=configuration();return reply({...c,url:process.env.SUPABASE_URL??null,anonKey:process.env.SUPABASE_ANON_KEY??null});}
-  if(url.searchParams.has('public')){const id=z.string().uuid().parse(url.searchParams.get('public'));const {data,error}=await database().from('solution_publications').select('id,payload,author_name,consented_at').eq('id',id).eq('visible',true).maybeSingle();if(error)throw new StudioError('Public preview unavailable.',503);if(!data)throw new StudioError('This story is unavailable or has been unpublished.',404);return reply(data);}
+  if(url.searchParams.has('public')){await identity(request);const id=z.string().uuid().parse(url.searchParams.get('public'));const {data,error}=await database().from('solution_publications').select('id,payload,author_name,consented_at').eq('id',id).eq('visible',true).maybeSingle();if(error)throw new StudioError('Public preview unavailable.',503);if(!data)throw new StudioError('This story is unavailable or has been unpublished.',404);return reply(data);}
   const owner=await identity(request),id=url.searchParams.get('id');
   if(id){const job=await ownerJob(owner,z.string().uuid().parse(id));const {data:publication}=await database().from('solution_publications').select('id,visible,include_source').eq('job_id',id).eq('owner_id',owner).maybeSingle();const {lease_token:_,checkpoint:__,lease_until:___,...safe}=job;return reply({...safe,publication,canRetry:job.stage==='failed'&&!!job.checkpoint&&job.attempts<3});}
   const {data,error}=await database().from('solution_jobs').select('id,problem,stage,message,created_at').eq('owner_id',owner).order('created_at',{ascending:false}).limit(30);if(error)throw new StudioError('Could not load your workspace.',503);return reply(data);
 }catch(error){return failure(error);}}
 export async function POST(request:Request){try{
   // Bearer tokens are explicit, not ambient cookies; additionally reject cross-origin writes.
-  const origin=request.headers.get('origin');if(origin&&origin!==new URL(request.url).origin)throw new StudioError('Cross-origin request rejected.',403);
+  if(!sameOrigin(request))throw new StudioError('Cross-origin request rejected.',403);
   const owner=await identity(request),body=await readBody(request),db=database();
   if(body.action==='submit'){
     if(!configuration().ready)throw new StudioError('Generation is not configured yet. Your draft stays in this browser.',503);

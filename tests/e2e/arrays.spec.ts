@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 const base=process.env.ARRAYS_TEST_URL??'http://localhost:3000';
+// Protected journeys require a real owner session. No production auth bypass exists.
+test.use({storageState:process.env.LEETLOVE_E2E_OWNER_STATE});
+test.skip(!process.env.LEETLOVE_E2E_OWNER_STATE,'Set LEETLOVE_E2E_OWNER_STATE to an authenticated owner browser-state file.');
 test('chapter navigation, guided correction, persistence, and honest unavailable runner',async({page})=>{
   await page.goto(`${base}/arrays`);
   await expect(page.getByRole('heading',{name:/Make arrays/})).toBeVisible();
@@ -35,7 +38,7 @@ test('every guided mission reaches its correct end and mobile has no document ov
 test('successful runner response enables completion; editing invalidates its verdict',async({page})=>{
   // UI contract fixture only: no actual Supabase or sandbox traffic in this test.
   const token=[Buffer.from('{"alg":"HS256"}').toString('base64url'),Buffer.from(JSON.stringify({sub:'test-user',exp:4102444800})).toString('base64url'),'test'].join('.');
-  await page.addInitScript(({token})=>localStorage.setItem('sb-arrays-test-auth-token',JSON.stringify({access_token:token,refresh_token:'test',expires_at:4102444800,token_type:'bearer',user:{id:'test-user'}})),{token});
+  await page.addInitScript(({token})=>{const fixture={access_token:token,refresh_token:'test',expires_at:4102444800,token_type:'bearer',user:{id:'test-user'}};document.cookie='sb-arrays-test-auth-token=base64-'+btoa(JSON.stringify(fixture))+'; Path=/; SameSite=Lax';},{token});
   await page.route('https://arrays-test.supabase.co/**',r=>r.fulfill({json:{}}));
   await page.route('**/api/arrays/run',async route=>{
     if(route.request().method()==='GET')return route.fulfill({json:{ready:true,url:'https://arrays-test.supabase.co',anonKey:'fixture'}});

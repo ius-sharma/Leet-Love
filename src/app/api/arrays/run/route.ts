@@ -6,6 +6,7 @@ import { StudioError } from '@/server/studio/config';
 import { readBody } from '@/server/studio/request';
 import { ExecutionFailure, SolutionSandbox } from '@/server/studio/sandbox';
 import { validateTrace, type JsonValue } from '@/submissions/contracts';
+import { sameOrigin } from '@/auth/config';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -16,7 +17,7 @@ export async function POST(request:Request){
   const sandbox=new SolutionSandbox();let owner:string|undefined;
   const cancel=()=>{void sandbox.close();};
   try{
-    const origin=request.headers.get('origin');if(origin&&origin!==new URL(request.url).origin)throw new StudioError('Cross-origin request rejected.',403);
+    if(!sameOrigin(request))throw new StudioError('Cross-origin request rejected.',403);
     if(!ready())throw new StudioError('Code execution is not enabled yet. Your draft stays on this device; guided missions still work.',503);
     const user=await identity(request),body=await readBody(request,60000);
     const m=typeof body.mission==='string'?getMission(body.mission):undefined;
