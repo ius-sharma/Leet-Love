@@ -13,8 +13,8 @@ test('landing preview teaches the pointer movement and the explorer remains reac
   await page.getByRole('button',{name:'Try it again'}).click();
   await expect(page.locator('.ll-equation')).toContainText('17');
   await page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:'Explore problems'}).click();
-  await expect(page).toHaveURL(/\/problems$/);
-  await expect(page.getByRole('heading',{name:'Find your next challenge'})).toBeVisible();
+  await expect(page).toHaveURL(/\/login/);
+  await expect(page.getByLabel('Your invited Google email')).toBeVisible();
 });
 
 test('mobile menu, FAQs and learning links work without overflow',async({page})=>{
@@ -23,9 +23,9 @@ test('mobile menu, FAQs and learning links work without overflow',async({page})=
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
   await page.screenshot({path:'test-results/landing-mobile.png',fullPage:true});
   await page.locator('summary').filter({hasText:'Do I need an account to start?'}).click();
-  await expect(page.getByText(/No. You can explore the catalog/)).toBeVisible();
+  await expect(page.getByText(/LeetLove is currently in private beta/)).toBeVisible();
   await page.getByRole('button',{name:'Open navigation'}).click();
   await page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:/Learning paths/}).click();
-  await expect(page).toHaveURL(/\/arrays$/);
-  await expect(page.getByRole('heading',{name:/Make arrays/})).toBeVisible();
+  await expect(page).toHaveURL(/\/login/);
+  await expect(page.getByLabel('Your invited Google email')).toBeVisible();
 });
